@@ -16,7 +16,7 @@
     <h1> My Pure To Do List </h1>
     <% @tasks.all.each_with_index do |task, index| %>
 
-    <li> <%= task %>
+    <li> <%= task.description %>
     <button hx-include="[name='_method']"
             hx-target=".to-do-list"
             hx-post=<%="/tasks/#{index}" %> >
