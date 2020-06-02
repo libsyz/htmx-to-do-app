@@ -9,20 +9,21 @@
   <link rel="stylesheet" href="./style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
 </head>
 <body>
 
   <ul class="to-do-list">
     <h1> My Pure To Do List </h1>
-    <% TASKS.each_with_index do |task, index| %>
+    <% @tasks.all.each_with_index do |task, index| %>
 
     <li> <%= task %>
     <button hx-include="[name='_method']"
+            hx-target=".to-do-list"
             hx-post=<%="/tasks/#{index}" %> >
+
             <input name="_method" type="hidden" value="delete"/>
-            Delete </button></li>
+            Delete
+    </button></li>
     <% end %>
   </ul>
 

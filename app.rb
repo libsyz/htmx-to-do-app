@@ -1,31 +1,42 @@
 
-
-require "sinatra"
+require 'sinatra'
+require "sinatra/base"
 require "pry-byebug"
+require_relative "task_repo"
 
 
-use Rack::MethodOverride
 
-TASKS = ['laundry', 'cleaning']
+  use Rack::MethodOverride
 
-get '/' do
-  erb :tasks
-end
-
-post '/tasks' do
-  unless params['task'].empty?
-    TASKS << params['task']
-    erb :tasklist
-  else
-    erb :validation_error
+  def initialize
+    @tasks = TaskRepo.new
+    super
   end
-end
-
-post '/tasks/:id' do
-  binding.pry
-end
 
 
-delete '/tasks/:id' do
-  binding.pry
-end
+  get '/' do
+    binding.pry
+    erb :index
+  end
+
+  post '/tasks' do
+    unless params['task'].empty?
+      @repository << params['task']
+      erb :tasklist
+    else
+      erb :validation_error
+    end
+  end
+
+  post '/tasks/:id' do
+    binding.pry
+  end
+
+  delete '/tasks/:id' do
+    @repository.delete_at(params[:id].to_i)
+    erb :tasklist
+  end
+
+
+
+
