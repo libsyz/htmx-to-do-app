@@ -1,0 +1,6 @@
+  <ul class="to-do-list">
+    <h1> My Pure To Do List </h1>
+    <% @tasks.all.each_with_index do |task, index| %>
+    <li> <%= task.description %>
+    <% end %>
+  </ul>

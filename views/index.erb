@@ -11,36 +11,22 @@
 
 </head>
 <body>
+  <div class="main">
+    <%= yield %>
+    <form class="pure-form">
+      <input id="task-form" name="task" type="text"
+      placeholder="new task"/>
 
-  <ul class="to-do-list">
-    <h1> My Pure To Do List </h1>
-    <% @tasks.all.each_with_index do |task, index| %>
+      <button hx-post="/tasks"
+      hx-include="input[name='task']"
+      hx-target=".to-do-list"
+      hx-swap="innerHTML"
+      class="pure-button pure-button-primary">
+      Add Task
+      </button>
 
-    <li> <%= task.description %>
-    <button hx-include="[name='_method']"
-            hx-target=".to-do-list"
-            hx-post=<%="/tasks/#{index}" %> >
-
-            <input name="_method" type="hidden" value="delete"/>
-            Delete
-    </button></li>
-    <% end %>
-  </ul>
-
-
-  <div class="task-creator">
-    <input id="form" name="task" type="text" placeholder="new task" />
-    <button hx-post="/tasks"
-    hx-include="input[name='task']"
-    hx-target=".to-do-list"
-    hx-swap="innerHtml">
-    Add Task
-  </button>
-</div>
-
-
-
-
+    </form>
+  </div>
 
 </body>
 </html>

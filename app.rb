@@ -1,27 +1,26 @@
 
 require 'sinatra'
-require "sinatra/base"
-require "pry-byebug"
 require_relative "task_repo"
-
+require 'pry-byebug'
 
 
   use Rack::MethodOverride
 
-  def initialize
-    @tasks = TaskRepo.new
-    super
+  class Sinatra::Application
+    def initialize
+      @tasks = TaskRepo.new
+      super
+    end
   end
 
-
   get '/' do
-    binding.pry
-    erb :index
+    erb :tasks, layout: :index
   end
 
   post '/tasks' do
     unless params['task'].empty?
-      @repository << params['task']
+      binding.pry
+      @tasks.all << Task.new(params['task'])
       erb :tasklist
     else
       erb :validation_error

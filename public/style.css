@@ -1,8 +1,12 @@
 
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 36px;
+  margin: 200px;
+}
 
 .to-do-list {
-  padding: 150px;
-  margin: 0 auto;
 }
 
 .task-creator {

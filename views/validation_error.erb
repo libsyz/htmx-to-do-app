@@ -1,7 +1,7 @@
 <h1> My Pure To Do List </h1>
 <p class="alert"> Please enter a task </p>
-<% task_repository.each do |task| %>
-  <li> <%= task %> </li>
+<% @tasks.all.each do |task| %>
+  <li> <%= task.description %> </li>
 <% end %>
 
-<input id="form" class="form-error" hx-swap-oob="true" name="task" type="text" placeholder="new task">
+<input id="task-form" class="form-error" hx-swap-oob="true" name="task" type="text" placeholder="new task">
