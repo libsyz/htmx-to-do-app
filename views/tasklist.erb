@@ -4,7 +4,7 @@
 <h1> My Pure To Do List </h1>
 <% @tasks.all.each_with_index do |task, index| %>
 
-<% unless task.done? %>
+<% if task.done? %>
 <li>
   <p> <%= task.description %>
   <span hx-post=<%= "tasks/#{index}"%>

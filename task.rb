@@ -5,7 +5,7 @@ class Task < Struct.new(:description, :done)
     end
 
     def mark_as_done!
-      done = true
+      self.done = true
     end
 
     def done?
