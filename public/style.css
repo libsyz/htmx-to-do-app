@@ -1,0 +1,20 @@
+
+
+.to-do-list {
+  padding: 150px;
+  margin: 0 auto;
+}
+
+.task-creator {
+  padding-top: 40px;
+  color: red;
+}
+
+
+.alert {
+  color: red;
+}
+
+.form-error {
+  outline: red;
+}

@@ -3,32 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <script src="https://unpkg.com/htmx.org@0.0.4"></script>
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
 
-  <script src="https://unpkg.com/htmx.org@0.0.4"></script>
+  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 
 </head>
 <body>
-  <h1> My Pure To Do List </h1>
 
   <ul class="to-do-list">
-    <% TASKS.each do |task| %>
+    <h1> My Pure To Do List </h1>
+    <% TASKS.each_with_index do |task, index| %>
 
-    <li> <%= task %> </li>
+    <li> <%= task %>
+    <button hx-include="[name='_method']"
+            hx-post=<%="/tasks/#{index}" %> >
+            <input name="_method" type="hidden" value="delete"/>
+            Delete </button></li>
     <% end %>
-
   </ul>
 
-<div>
-    <input name="task" type="text" placeholder="new task" />
-    <button hx-post="/tasks"
-            hx-include="input[name='task']"
-            hx-target=".to-do-list"
-            hx-swap="innerHtml">
-      Add Task
-    </button>
 
+  <div class="task-creator">
+    <input id="form" name="task" type="text" placeholder="new task" />
+    <button hx-post="/tasks"
+    hx-include="input[name='task']"
+    hx-target=".to-do-list"
+    hx-swap="innerHtml">
+    Add Task
+  </button>
 </div>
+
+
 
 
 

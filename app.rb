@@ -1,6 +1,10 @@
 
+
 require "sinatra"
-require 'pry-byebug'
+require "pry-byebug"
+
+
+use Rack::MethodOverride
 
 TASKS = ['laundry', 'cleaning']
 
@@ -9,7 +13,19 @@ get '/' do
 end
 
 post '/tasks' do
+  unless params['task'].empty?
+    TASKS << params['task']
+    erb :tasklist
+  else
+    erb :validation_error
+  end
+end
+
+post '/tasks/:id' do
   binding.pry
-  TASKS << params['task']
-  erb :tasklist
+end
+
+
+delete '/tasks/:id' do
+  binding.pry
 end

@@ -1,6 +1,8 @@
 
-
+<h1> My Pure To Do List </h1>
 <% TASKS.each do |task| %>
   <li> <%= task %> </li>
 <% end %>
+
+<input id="form" hx-swap-oob="true" name="task" type="text" placeholder="new task">
 
