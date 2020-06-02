@@ -4,8 +4,37 @@
 <h1> My Pure To Do List </h1>
 <% @tasks.all.each_with_index do |task, index| %>
 
-  <li> <%= task.description %>
+<% unless task.done? %>
+<li>
+  <p> <%= task.description %>
+  <span hx-post=<%= "tasks/#{index}"%>
+        hx-target=".to-do-list"
+        hx-swap="innerHTML"
+        hx-include=<%= "[name=_method][data-delete='#{index}']" %>> delete </span>
+  </p>
+  <input type="hidden"
+         name="_method"
+         value="delete"
+         data-delete=<%= "#{index}" %>>
+</li>
 
+
+<% else %>
+<li>
+  <p> <%= task.description %>
+    <span hx-post=<%= "tasks/#{index}"%>
+          hx-target=".to-do-list"
+          hx-swap="innerHTML"
+          hx-include=<%="[name=_method][data-mark='#{index}']"%>> mark as done
+    </span>
+      <input
+        type="hidden"
+        name="_method"
+        value="patch"
+        data-mark=<%="#{index}" %>>
+    </p>
+</li>
+  <% end %>
 <% end %>
 
 

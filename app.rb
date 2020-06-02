@@ -19,7 +19,6 @@ require 'pry-byebug'
 
   post '/tasks' do
     unless params['task'].empty?
-      binding.pry
       @tasks.all << Task.new(params['task'])
       erb :tasklist
     else
@@ -27,12 +26,13 @@ require 'pry-byebug'
     end
   end
 
-  post '/tasks/:id' do
-    binding.pry
+  delete '/tasks/:id' do
+    @tasks.all.delete_at(params[:id].to_i)
+    erb :tasklist
   end
 
-  delete '/tasks/:id' do
-    @repository.delete_at(params[:id].to_i)
+  patch '/tasks/:id' do
+    @tasks.all[params[:id].to_i].mark_as_done!
     erb :tasklist
   end
 
