@@ -1,0 +1,42 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://unpkg.com/htmx.org@0.0.4"></script>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./fighter.css">
+  <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+
+</head>
+<body>
+  <h1> Welcome To Street Fighter </h1>
+  <p> Select Your Character </p>
+
+  <form>
+    <select hx-get="/fighters" name="fighter"
+    hx-target="#fighter_avatar">
+    <option selected> -- select a fighter -- </option>
+    <option value="ryu">Ryu</option>
+    <option value="sagat">Sagat</option>
+    <option value="chunli"> Chun-Li </option>
+  </select>
+</form>
+
+<p> Select Your Special Move </p>
+
+<form id="techniques">
+  <select>
+    <option selected> -- select a fighter -- </option>
+  </select>
+</form>
+
+<div class="nes-container" id="fighter_avatar">
+  <img src="./no_fighter.png" alt="no-fighter">
+</div>
+
+
+
+
+
+</body>
+</html>

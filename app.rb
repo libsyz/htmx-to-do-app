@@ -36,6 +36,17 @@ require 'pry-byebug'
     erb :tasklist
   end
 
+# Just Demo Purpose
+
+  get '/demo' do
+    erb :demo
+  end
+
+  get '/fighters' do
+    @fighter = ["ryu", "sagat", "chunli"].find {|f| f == params['fighter'] }
+    erb :fighter_selected
+  end
+
 
 
 
