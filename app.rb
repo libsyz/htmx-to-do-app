@@ -1,6 +1,7 @@
-
 require 'sinatra'
 require_relative "task_repo"
+require_relative "fighter_repo"
+
 require 'pry-byebug'
 
 
@@ -9,6 +10,7 @@ require 'pry-byebug'
   class Sinatra::Application
     def initialize
       @tasks = TaskRepo.new
+      @fighters = FighterRepo.new
       super
     end
   end
@@ -43,9 +45,16 @@ require 'pry-byebug'
   end
 
   get '/fighters' do
-    @fighter = ["ryu", "sagat", "chunli"].find {|f| f == params['fighter'] }
+
+    @selected = @fighters.find(params['fighter'])
+
     erb :fighter_selected
   end
+
+  get '/combo' do
+
+  end
+
 
 
 

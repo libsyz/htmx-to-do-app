@@ -1,6 +1,17 @@
 
+.main {
+  padding: 50px 100px;
+}
+
 img {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   object-fit: cover;
+}
+
+
+.grid-3-columns {
+  display: grid;
+  grid-template-columns: 20% 30% 50%;
+  grid-column-gap: 8px;
 }

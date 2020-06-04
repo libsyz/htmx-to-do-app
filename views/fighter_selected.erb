@@ -2,12 +2,11 @@
 <form id="techniques" hx-swap-oob="true">
   <select hx-get="/techniques">
     <option selected> -- select -- </option>
-    <option> hadouken </option>
-    <option> shoryuken </option>
+    <% @selected[:moveset].each do |move| %>
+    <option hx-get="/combo" value=<%= move[:name] %>> <%= move[:name] %> </option>
+  <% end %>
   </select>
 </form>
 
-
-
-<img class="fighter" src=<%= "#{@fighter}.jpg" %> alt= <%= "#{@fighter}" %>>
+<img class="fighter" src=<%= "#{@selected[:name]}.jpg" %> alt= <%= "#{@selected[:name]}" %>>
 
