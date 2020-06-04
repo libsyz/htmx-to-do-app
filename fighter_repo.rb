@@ -10,8 +10,10 @@ class FighterRepo
           style: "Ansatsuken"
         },
         moveset: [
-          {name: "hadouken"},
-          {name: "shoryuken"}
+          {name: "Hadouken",
+           code: "hadouken"},
+          {name: "Shoryuken",
+           code: "shoryuken"}
         ]
       },
       {
@@ -22,8 +24,10 @@ class FighterRepo
           style: "Muay Thai"
         },
         moveset: [
-          {name: "Tiger Knee"},
-          {name: "Tiger Shot"}
+          {name: "Tiger Knee",
+           code: "tiger_knee"},
+          {name: "Tiger Shot",
+           code: "tiger_shot"}
         ]
       },
       {
@@ -34,8 +38,10 @@ class FighterRepo
           style: "Chinese Kempo"
         },
         moveset: [
-          {name: "Kikoken"},
-          {name: "Renkiko"}
+          {name: "Kikoken",
+           code: "kikoken"},
+          {name: "Renkiko",
+           code: "renkiko"}
         ]
       },
     ]
@@ -43,10 +49,6 @@ class FighterRepo
 
   def all
     @fighters
-  end
-
-  def find(name)
-    @fighters.find { |el| el[:name] = name }
   end
 
 end

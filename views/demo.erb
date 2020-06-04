@@ -8,15 +8,17 @@
   <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
 
 </head>
-<body>
+<body class="nes-container is-dark">
   <div class="main">
 
     <h1> Welcome To Street Fighter </h1>
     <p> Select Your Character </p>
 
     <form>
-      <select hx-get="/fighters" name="fighter"
-      hx-target="#fighter_avatar">
+      <select hx-get="/fighters"
+              name="fighter"
+              hx-target="#fighter-avatar"
+              hx-swap="outerHTML">
       <option selected> -- select a fighter -- </option>
       <option value="ryu">Ryu</option>
       <option value="sagat">Sagat</option>
@@ -34,28 +36,18 @@
   </form>
 
 
-
-  <div class="nes-container grid-3-columns" id="fighter_avatar">
-    <img src="./no_fighter.png" alt="no-fighter">
+  <div class="nes-container is-dark grid-3-columns" >
+    <img id="fighter-avatar" src="./no_fighter.png" alt="no-fighter">
     <div class="fighter-data">
-      <ul>
+      <ul class="nes-list is-disc">
         <li>Country: Japan</li>
         <li>Age: 30 years old </li>
         <li>Style: Karate </li>
       </ul>
     </div>
-    <div class="fighter-special">
-     <div style="display: block; margin-bottom: 10px" href="#" class="nes-badge">
-      <span class="is-primary">Hadouken</span>
+    <div id="fighter-special">
+
     </div>
-
-    <img style="height:50px; width:50px; " src="./arrow-right.svg" alt="">
-    <img style="height:50px; width:50px; " src="./arrow-down-right.svg" alt="">
-    <img style="height:50px; width:50px; " src="./arrow-down.svg" alt="">
-    +
-    <a class="nes-btn" href="#">Punch</a>
-
-  </div>
   <div>
 
   </div>

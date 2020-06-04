@@ -1,7 +1,18 @@
 
+body {
+  background-color: #050253;
+}
+
 .main {
   padding: 50px 100px;
 }
+
+.main > h1 {
+  background: linear-gradient(to right, #c02425, #f0cb35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 
 img {
   height: 150px;

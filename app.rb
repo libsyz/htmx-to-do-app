@@ -45,14 +45,25 @@ require 'pry-byebug'
   end
 
   get '/fighters' do
-
-    @selected = @fighters.find(params['fighter'])
-
+    @selected = @fighters.all.find { |el| el[:name] == params['fighter']}
     erb :fighter_selected
   end
 
-  get '/combo' do
-
+  get '/techniques' do
+    @special = params[:technique]
+    binding.pry
+    case @special
+      when "hadouken" || "tiger_shot"
+        erb :'moves/hadouken'
+      when "tiger_knee"
+        erb :'moves/tiger_knee'
+      when "shoryuken"
+        erb :'moves/shoryuken'
+      when "kikoken"
+        erb :'moves/kikoken'
+      when "renkiko"
+        erb :'moves/renkiko'
+      end
   end
 
 

@@ -1,12 +1,20 @@
 
+<div id="fighter-special" hx-swap-oob="true">
+
+</div>
+
 <form id="techniques" hx-swap-oob="true">
-  <select hx-get="/techniques">
+  <select hx-target="#fighter-special"
+          hx-get="/techniques"
+          name="technique">
     <option selected> -- select -- </option>
     <% @selected[:moveset].each do |move| %>
-    <option hx-get="/combo" value=<%= move[:name] %>> <%= move[:name] %> </option>
+    <option value=<%= "#{move[:code]}" %>> <%= move[:name] %> </option>
   <% end %>
   </select>
 </form>
 
-<img class="fighter" src=<%= "#{@selected[:name]}.jpg" %> alt= <%= "#{@selected[:name]}" %>>
+
+
+<img class="fighter" id="fighter-avatar" src=<%= "#{@selected[:name]}.jpg" %> alt= <%= "#{@selected[:name]}" %>>
 
