@@ -17,15 +17,8 @@
         <h1> Ryu's to-do list </h1>
         <img class="ryu" src="./ryu_8_bit.png" alt="">
       </div>
-        <ul class="nes-list is-circle">
-          <% @tasks.all.each do |task| %>
-            <li> <p> <%= task.description  %> </p> </li>
-          <% end %>
-      </ul>
+        <%= yield %>
     </div>
-
-
-
 
 
     <form class="nes-field">
@@ -38,6 +31,7 @@
       <button hx-post="/tasks"
               hx-include="input[name='task']"
               hx-target=".nes-list"
+              hx-swap="outerHTML"
               class="nes-btn is-primary">
               Add Task
       </button>

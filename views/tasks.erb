@@ -1,44 +1,49 @@
-
-<input class="nes-input form-error" id="task-form" hx-swap-oob="true" name="task" type="text" placeholder="new task">
-
-<% if @error %>
-  <p class="alert"> Please enter a task </p>
+<% if @clear  %>
+  <input class="nes-input form-error" id="task-form" hx-swap-oob="true" name="task" type="text" placeholder="new task">
 <% end %>
+
+
+
+<ul class="nes-list is-disc">
+
+  <% if @error %>
+    <p class="alert"> Please enter a task </p>
+  <% end %>
 
 <% @tasks.all.each_with_index do |task, index| %>
 
 <% if task.done? %>
-<li>
-  <p> <%= task.description %>
-    <span hx-post=<%= "tasks/#{index}"%>
-      hx-target=".to-do-list"
-      hx-swap="innerHTML"
-      hx-include=<%= "[name=_method][data-delete='#{index}']" %>> delete </span>
+
+  <li class='icon-list'>
+    <p class="nes-text is-disabled"> <%= task.description %>
+      <span hx-post=<%= "tasks/#{index}"%>
+            hx-target=".nes-list"
+            hx-swap="outerHTML"
+            class="nes-text is-warning"
+            hx-include=<%= "[name=_method][data-delete='#{index}']" %>>
+        delete
+      </span>
     </p>
-    <input type="hidden"
-    name="_method"
-    value="delete"
-    data-delete=<%= "#{index}" %>>
-  </li>
+      <input type="hidden" name="_method" value="delete" data-delete=<%= "#{index}" %>>
+    </li>
 
 
   <% else %>
   <li>
     <p> <%= task.description %>
-      <span hx-post=<%= "tasks/#{index}"%>
-        hx-target=".to-do-list"
-        hx-swap="innerHTML"
+      <a
+        class="nes-btn"
+        hx-post=<%= "tasks/#{index}"%>
+        hx-target=".nes-list"
+        hx-swap="outerHTML"
         hx-include=<%="[name=_method][data-mark='#{index}']"%>> mark as done
-      </span>
-      <input
-      type="hidden"
-      name="_method"
-      value="patch"
-      data-mark=<%="#{index}" %>>
+      </a>
+      <input type="hidden" name="_method" value="patch" data-mark=<%="#{index}" %>>
     </p>
   </li>
   <% end %>
-<% end %>
+  <% end %>
+</ul>
 
 
 

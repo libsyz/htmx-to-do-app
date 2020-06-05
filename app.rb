@@ -16,11 +16,12 @@ end
 # Ryu's to-do list
 
 get '/' do
-  erb :index
+  erb :tasks, layout: :index
 end
 
 post '/tasks' do
   unless params['task'].empty?
+    @clear = true
     @tasks.all << Task.new(params['task'])
     erb :tasks
   else
@@ -36,7 +37,7 @@ end
 
 patch '/tasks/:id' do
   @tasks.all[params[:id].to_i].mark_as_done!
-  erb :tasklist
+  erb :tasks
 end
 
 # Street Fighter Demo
