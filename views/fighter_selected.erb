@@ -3,6 +3,14 @@
 
 </div>
 
+<div id="fighter-data" hx-swap-oob=true>
+  <ul class="nes-list is-disc">
+    <li> Age: <%= @selected[:infos][:age] %> </li>
+    <li> Country: <%= @selected[:infos][:country] %> </li>
+    <li> Fighting Style: <%= @selected[:infos][:style] %> </li>
+  </ul>
+</div>
+
 <form id="techniques" hx-swap-oob="true">
   <select hx-target="#fighter-special"
           hx-get="/techniques"
