@@ -51,7 +51,8 @@ get '/techniques' do
   @special = params[:technique]
   case @special
   when "hadouken", "tiger_shot"
-    @special = special.split("_").map(&:capitalize).join(" ")
+    binding.pry
+    @special = @special.split("_").map(&:capitalize).join(" ")
     erb :'moves/hadouken'
   when "tiger_knee"
     erb :'moves/tiger_knee'
