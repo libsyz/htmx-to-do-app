@@ -3,7 +3,6 @@
 <% end %>
 
 
-
 <ul class="nes-list is-disc">
 
   <% if @error %>
@@ -16,13 +15,13 @@
 
   <li class='icon-list'>
     <p class="nes-text is-disabled"> <%= task.description %>
-      <span hx-post=<%= "tasks/#{index}"%>
+      <i hx-post=<%= "tasks/#{index}"%>
             hx-target=".nes-list"
             hx-swap="outerHTML"
-            class="nes-text is-warning"
+            class="nes-icon close is-small"
             hx-include=<%= "[name=_method][data-delete='#{index}']" %>>
-        delete
-      </span>
+      </i>
+
     </p>
       <input type="hidden" name="_method" value="delete" data-delete=<%= "#{index}" %>>
     </li>
@@ -31,13 +30,12 @@
   <% else %>
   <li>
     <p> <%= task.description %>
-      <a
-        class="nes-btn"
+      <span class="nes-text is-primary"
         hx-post=<%= "tasks/#{index}"%>
         hx-target=".nes-list"
         hx-swap="outerHTML"
-        hx-include=<%="[name=_method][data-mark='#{index}']"%>> mark as done
-      </a>
+        hx-include=<%="[name=_method][data-mark='#{index}']"%>> done
+      </span>
       <input type="hidden" name="_method" value="patch" data-mark=<%="#{index}" %>>
     </p>
   </li>
