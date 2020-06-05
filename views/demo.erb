@@ -12,9 +12,9 @@
   <div class="main">
 
     <h1> Welcome To Street Fighter </h1>
-    <p> Select Your Character </p>
+    <p class="nes-text padding-top"> Select Your Character </p>
 
-    <form>
+    <form class="nes-select is-dark">
       <select hx-get="/fighters"
       name="fighter"
       hx-target="#fighter-avatar"
@@ -27,15 +27,15 @@
   </form>
 
 
-  <p> Select Your Special Move </p>
+  <p class="nes-text padding-top"> Select Your Special Move </p>
 
-  <form id="techniques">
+  <form class="nes-select is-dark" id="techniques">
     <select>
       <option selected> -- select a fighter -- </option>
     </select>
   </form>
 
-  <div class="nes-container is-dark grid-3-columns" >
+  <div class="nes-container is-dark grid-3-columns margin-top">
     <img class="fighter" id="fighter-avatar" src="./no_fighter.png" alt="no-fighter">
     <div id="fighter-data">
 
