@@ -14,7 +14,7 @@ class TaskRepo
   private
 
   def seed
-    @tasks << Task.new("Do the dishes") << Task.new("Do the laundry")
+    @tasks << Task.new("Meet Ken") << Task.new("Practice my hadouken")
   end
 
 end

@@ -4,28 +4,45 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="https://unpkg.com/htmx.org@0.0.4"></script>
-  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-
+  <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
-  <div class="main">
-    <%= yield %>
-    <form class="pure-form">
-      <input id="task-form" name="task" type="text"
-      placeholder="new task"/>
+
+  <div class="nes-container main">
+    <div class="list">
+      <div class="list-title">
+        <h1> Ryu's to-do list </h1>
+        <img class="ryu" src="./ryu_8_bit.png" alt="">
+      </div>
+        <ul class="nes-list is-circle">
+          <% @tasks.all.each do |task| %>
+            <li> <p> <%= task.description  %> </p> </li>
+          <% end %>
+      </ul>
+    </div>
+
+
+
+
+
+    <form class="nes-field">
+      <input class="nes-input"
+             id="task-form"
+             name="task"
+             type="text"
+             placeholder="new task"/>
 
       <button hx-post="/tasks"
               hx-include="input[name='task']"
-              hx-target=".to-do-list"
-              hx-swap="innerHTML"
-              class="pure-button pure-button-primary">
+              hx-target=".nes-list"
+              class="nes-btn is-primary">
               Add Task
       </button>
-    </form>
-  </div>
+  </form>
+</div>
 
 </body>
 </html>

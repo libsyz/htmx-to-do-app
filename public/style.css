@@ -6,6 +6,16 @@
   margin: 200px;
 }
 
+.list-title {
+  display: flex;
+  align-items: center;
+  justify-content: middle;
+}
+
+.ryu {
+  height: 50px;
+  display: inline;
+}
 .to-do-list {
 }
 

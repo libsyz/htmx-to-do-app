@@ -13,22 +13,25 @@ class Sinatra::Application
   end
 end
 
+# Ryu's to-do list
+
 get '/' do
-  erb :tasks, layout: :index
+  erb :index
 end
 
 post '/tasks' do
   unless params['task'].empty?
     @tasks.all << Task.new(params['task'])
-    erb :tasklist
+    erb :tasks
   else
-    erb :validation_error
+    @error = true
+    erb :tasks
   end
 end
 
 delete '/tasks/:id' do
   @tasks.all.delete_at(params[:id].to_i)
-  erb :tasklist
+  erb :tasks
 end
 
 patch '/tasks/:id' do
@@ -36,7 +39,7 @@ patch '/tasks/:id' do
   erb :tasklist
 end
 
-# Just Demo Purpose
+# Street Fighter Demo
 
 get '/demo' do
   erb :demo
@@ -51,7 +54,6 @@ get '/techniques' do
   @special = params[:technique]
   case @special
   when "hadouken", "tiger_shot"
-    binding.pry
     @special = @special.split("_").map(&:capitalize).join(" ")
     erb :'moves/hadouken'
   when "tiger_knee"
