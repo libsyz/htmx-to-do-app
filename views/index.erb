@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="https://unpkg.com/htmx.org@0.0.4"></script>
-<link rel="stylesheet" href="https://unpkg.com/nes.css@latest/css/nes.min.css">
-<link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://unpkg.com/nes.css@latest/css/nes.min.css">
+  <link rel="stylesheet" href="./style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
@@ -14,27 +14,28 @@
   <div class="nes-container main">
     <div class="list">
       <div class="list-title">
-        <h1> Ryu's to-do list </h1>
+        <h2> Ryu's to-do list </h2>
         <img class="ryu" src="./ryu_8_bit.png" alt="">
       </div>
-        <%= yield %>
+      <%= yield %>
     </div>
 
 
     <form class="nes-field">
       <input class="nes-input"
-             id="task-form"
-             name="task"
-             type="text"
-             placeholder="new task"/>
+      id="task-form"
+      name="task"
+      type="text"
+      placeholder="new task"/>
 
       <button hx-post="/tasks"
-              hx-include="input[name='task']"
-              hx-target=".nes-list"
-              hx-swap="outerHTML"
-              class="nes-btn is-primary">
-              Add Task
-      </button>
+      hx-include="input[name='task']"
+      hx-target=".nes-list"
+      hx-swap="outerHTML"
+      class="nes-btn is-primary">
+      Add Task
+    </button>
+
   </form>
 </div>
 

@@ -6,6 +6,10 @@
   margin: 200px;
 }
 
+.list {
+  margin-bottom: 10px;
+}
+
 .list-title {
   display: flex;
   align-items: center;
@@ -14,23 +18,14 @@
 
 .ryu {
   height: 50px;
+  width: 50px;
   display: inline;
-}
-.to-do-list {
-}
 
-.task-creator {
-  padding-top: 40px;
-  color: red;
 }
-
 
 .alert {
   color: red;
 }
 
-.form-error {
-  outline: red;
-}
 
 

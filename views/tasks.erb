@@ -13,7 +13,7 @@
 
 <% if task.done? %>
 
-  <li class='icon-list'>
+  <li>
     <p class="nes-text is-disabled"> <%= task.description %>
       <i hx-post=<%= "tasks/#{index}"%>
             hx-target=".nes-list"
@@ -21,13 +21,11 @@
             class="nes-icon close is-small"
             hx-include=<%= "[name=_method][data-delete='#{index}']" %>>
       </i>
-
     </p>
       <input type="hidden" name="_method" value="delete" data-delete=<%= "#{index}" %>>
-    </li>
-
-
+  </li>
   <% else %>
+
   <li>
     <p> <%= task.description %>
       <span class="nes-text is-primary"

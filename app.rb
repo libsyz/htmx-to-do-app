@@ -25,6 +25,7 @@ post '/tasks' do
     @tasks.all << Task.new(params['task'])
     erb :tasks
   else
+    binding.pry
     @error = true
     erb :tasks
   end
