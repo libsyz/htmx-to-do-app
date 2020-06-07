@@ -20,15 +20,13 @@ get '/' do
 end
 
 post '/tasks' do
-  unless params['task'].empty?
-    @clear = true
+  if params['task'].length.positive?
+    @clear_form = true
     @tasks.all << Task.new(params['task'])
-    erb :tasks
   else
-    binding.pry
-    @error = true
-    erb :tasks
+    @error = "please enter a task"
   end
+    erb :tasks
 end
 
 delete '/tasks/:id' do

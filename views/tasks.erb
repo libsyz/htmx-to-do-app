@@ -1,13 +1,13 @@
-<% if @clear  %>
-  <input class="nes-input form-error" id="task-form" hx-swap-oob="true" name="task" type="text" placeholder="new task">
-<% end %>
 
+<% if @clear_form %>
+  <input class="nes-input" id="task-form" hx-swap-oob="true" name="task" type="text" placeholder="new task">
+<% end %>
 
 <ul class="nes-list is-disc">
 
-  <% if @error %>
-    <p class="alert"> Please enter a task </p>
-  <% end %>
+<% if @error %>
+  <p class="nes-text is-error"> <%=  @error %> </p>
+<% end %>
 
 <% @tasks.all.each_with_index do |task, index| %>
 
@@ -27,7 +27,7 @@
   <% else %>
 
   <li>
-    <p> <%= task.description %>
+    <p class="nes-text"> <%= task.description %>
       <span class="nes-text is-primary"
         hx-post=<%= "tasks/#{index}"%>
         hx-target=".nes-list"
